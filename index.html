@@ -11,20 +11,20 @@
       --panel2:rgba(255,255,255,.12);
       --text:#f8f8f8;
       --muted:#ddd;
-      --green:rgba(63, 235, 161, .78);
-      --blue:rgba(80, 176, 255, .78);
-      --pink:rgba(255, 99, 189, .78);
-      --orange:rgba(255, 179, 75, .78);
-      --purple:rgba(168, 112, 255, .78);
-      --red:rgba(255, 83, 83, .78);
-      --cyan:rgba(50, 245, 255, .70);
-      --yellow:rgba(255, 236, 96, .80);
+      --green:rgba(35, 238, 142, .92);
+      --blue:rgba(80, 176, 255, .82);
+      --pink:rgba(255, 99, 189, .82);
+      --orange:rgba(255, 179, 75, .86);
+      --purple:rgba(168, 112, 255, .84);
+      --red:rgba(255, 45, 45, .94);
+      --cyan:rgba(50, 245, 255, .78);
+      --yellow:rgba(255, 236, 96, .88);
       --blackkey:#0c0c0d;
       --whitekey:#fbfbf8;
       --safe-bottom: env(safe-area-inset-bottom, 0px);
       --safe-top: env(safe-area-inset-top, 0px);
     }
-    *{box-sizing:border-box; -webkit-tap-highlight-color: transparent; user-select:none;}
+    *{box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none;}
     html,body{margin:0; height:100%; width:100%; overflow:hidden; background:var(--bg); color:var(--text); font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;}
     body{position:fixed; inset:0; touch-action:manipulation;}
     button, select{font:inherit;}
@@ -33,29 +33,64 @@
 
     /* HOME */
     #homeScreen{align-items:center; justify-content:center; padding:calc(22px + var(--safe-top)) 18px calc(22px + var(--safe-bottom));}
-    .home-card{width:min(960px, 96vw); max-height:96vh; overflow:auto; padding:24px; border-radius:28px; background:rgba(25,25,25,.44); border:1px solid rgba(255,255,255,.22); box-shadow:0 24px 70px rgba(0,0,0,.25); backdrop-filter: blur(8px);}
+    .home-card{width:min(980px, 96vw); max-height:96vh; overflow:auto; padding:24px; border-radius:28px; background:rgba(25,25,25,.44); border:1px solid rgba(255,255,255,.22); box-shadow:0 24px 70px rgba(0,0,0,.25); backdrop-filter: blur(8px);}
     .placeholder-banner{border-radius:22px; min-height:130px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; text-align:center; background:linear-gradient(135deg, rgba(60,220,255,.35), rgba(255,75,190,.25), rgba(255,210,70,.28)); border:2px dashed rgba(255,255,255,.38); margin-bottom:16px; padding:18px;}
     .title{font-weight:1000; letter-spacing:-.05em; line-height:.9; font-size:clamp(2.6rem, 8vw, 6.8rem); text-transform:uppercase; text-shadow:0 5px 0 rgba(0,0,0,.25);}
     .subtitle{font-weight:800; letter-spacing:.03em; color:#fff; opacity:.88;}
     .grid{display:grid; gap:14px;}
     .home-grid{grid-template-columns:1fr 1fr;}
     .section-title{font-weight:900; font-size:.85rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.8); margin:18px 0 8px;}
-    .mode-card, .instrument-card{border:2px solid rgba(255,255,255,.24); border-radius:20px; padding:16px; cursor:pointer; min-height:120px; box-shadow:inset 0 1px 0 rgba(255,255,255,.26), 0 10px 26px rgba(0,0,0,.18); transition:.16s transform,.16s border-color,.16s filter;}
+    .mode-card, .instrument-card{border:2px solid rgba(255,255,255,.24); border-radius:20px; padding:16px; cursor:pointer; min-height:118px; box-shadow:inset 0 1px 0 rgba(255,255,255,.26), 0 10px 26px rgba(0,0,0,.18); transition:.16s transform,.16s border-color,.16s filter;}
     .mode-card:hover,.instrument-card:hover{transform:translateY(-2px); filter:brightness(1.08);}
     .mode-card.selected,.instrument-card.selected{border-color:#fff; box-shadow:0 0 0 4px rgba(255,255,255,.14), 0 12px 30px rgba(0,0,0,.25);}
-    .mode-note{background:var(--blue);}
-    .mode-chord{background:var(--purple);}
+    .mode-note{background:var(--blue); color:#03111c;}
+    .mode-chord{background:var(--purple); color:#0c031c;}
     .instrument-rhodes{background:var(--green); color:#07150f;}
     .instrument-piano{background:var(--yellow); color:#181100;}
     .instrument-guitar{background:var(--orange); color:#160c00;}
     .mode-card h3,.instrument-card h3{margin:0 0 8px; font-size:1.15rem;}
-    .mode-card p,.instrument-card p{margin:0; opacity:.88; font-weight:650; font-size:.9rem; line-height:1.32;}
+    .mode-card p,.instrument-card p{margin:0; opacity:.9; font-weight:650; font-size:.9rem; line-height:1.32;}
     .instrument-grid{grid-template-columns:repeat(3,1fr);}
-    .start-row{display:flex; gap:12px; align-items:center; margin-top:18px; flex-wrap:wrap;}
+    .home-actions{display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr; gap:12px; margin-top:18px; align-items:stretch;}
     .main-btn{border:0; border-radius:18px; padding:15px 22px; min-height:52px; font-weight:1000; text-transform:uppercase; letter-spacing:.05em; color:#051014; background:var(--cyan); box-shadow:0 10px 0 rgba(0,0,0,.2), 0 15px 35px rgba(0,0,0,.25); cursor:pointer;}
     .main-btn:active{transform:translateY(4px); box-shadow:0 6px 0 rgba(0,0,0,.2), 0 10px 22px rgba(0,0,0,.25);}
-    .secondary-btn{border:1px solid rgba(255,255,255,.24); border-radius:16px; padding:12px 16px; min-height:48px; color:#fff; background:rgba(0,0,0,.28); cursor:pointer; font-weight:800;}
+    .secondary-btn{border:1px solid rgba(255,255,255,.24); border-radius:16px; padding:12px 16px; min-height:48px; color:#fff; background:rgba(0,0,0,.28); cursor:pointer; font-weight:900;}
+    .launch-btn{background:var(--cyan); color:#041518;}
+    .how-btn{background:var(--pink); color:#210012;}
+    .gallery-btn{background:var(--orange); color:#160b00;}
+    .practice-btn{background:var(--green); color:#04130b;}
     .small-copy{font-size:.86rem; line-height:1.38; color:rgba(255,255,255,.76); margin-top:10px;}
+
+    /* UTILITY SCREENS */
+    .utility-screen{flex-direction:column; gap:10px; padding:calc(12px + var(--safe-top)) 12px calc(12px + var(--safe-bottom));}
+    .utility-top{display:flex; gap:10px; align-items:center; justify-content:space-between; border-radius:22px; background:rgba(20,20,20,.55); border:1px solid rgba(255,255,255,.18); padding:12px;}
+    .utility-title{font-weight:1000; letter-spacing:-.04em; font-size:clamp(1.4rem,4vw,2.7rem); line-height:1;}
+    .utility-actions{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+    .gallery-wrap{flex:1; min-height:0; border-radius:26px; background:rgba(45,45,45,.78); border:1px dashed rgba(255,255,255,.3); display:grid; place-items:center; text-align:center; padding:22px;}
+    .gallery-placeholder{max-width:780px;}
+    .gallery-placeholder h2{font-size:clamp(2rem,7vw,5rem); margin:.1em 0; letter-spacing:-.06em;}
+    .gallery-placeholder p{color:rgba(255,255,255,.78); font-weight:700; line-height:1.45;}
+
+    /* PRACTICE */
+    .practice-shell{flex:1; min-height:0; display:grid; grid-template-rows:auto auto 1fr; gap:10px;}
+    .practice-controls{display:grid; grid-template-columns:1.1fr .9fr 1.15fr; gap:10px;}
+    .practice-panel{border-radius:22px; background:rgba(20,20,20,.55); border:1px solid rgba(255,255,255,.18); padding:12px; min-width:0;}
+    .practice-label{font-size:.68rem; letter-spacing:.13em; text-transform:uppercase; font-weight:1000; color:rgba(255,255,255,.7); margin-bottom:8px;}
+    .bank-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px;}
+    .bank-btn{border:2px solid rgba(255,255,255,.18); border-radius:15px; padding:10px 8px; min-height:44px; font-weight:1000; cursor:pointer;}
+    .bank-btn.selected{border-color:#fff; box-shadow:0 0 0 4px rgba(255,255,255,.12);}
+    .meter-readout{min-height:56px; border-radius:16px; background:rgba(50,245,255,.20); border:1px solid rgba(50,245,255,.35); display:flex; align-items:center; padding:10px 12px; font-size:clamp(1rem,2.8vw,1.5rem); font-weight:1000; color:#fff; overflow:hidden;}
+    .meter-sub{margin-top:6px; color:rgba(255,255,255,.72); font-size:.8rem; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .octave-row{display:grid; grid-template-columns:auto 1fr auto auto 1fr auto; gap:6px; align-items:center;}
+    .tiny-btn{width:36px; height:36px; border:0; border-radius:12px; font-weight:1000; background:var(--yellow); color:#1a1200; cursor:pointer;}
+    .status-pill{height:36px; display:flex; align-items:center; justify-content:center; border-radius:12px; padding:0 8px; background:rgba(255,255,255,.14); color:#fff; font-weight:1000; font-size:.86rem; white-space:nowrap;}
+    .collapse-row{display:flex; gap:8px; margin-top:8px;}
+    .collapse-btn{flex:1; border:0; border-radius:14px; padding:10px; background:var(--purple); color:#fff; font-weight:1000; cursor:pointer;}
+    .practice-keyboards{min-height:0; display:grid; grid-template-rows:1fr 1fr; gap:10px;}
+    .practice-keyboards.collapsed{grid-template-rows:1fr;}
+    .practice-keyboard-zone{min-height:132px; border-radius:22px 22px 12px 12px; background:rgba(0,0,0,.34); padding:12px 8px 8px; border:1px solid rgba(255,255,255,.18); position:relative; overflow:hidden;}
+    .practice-keyboard-zone.hidden{display:none;}
+    .row-tag{position:absolute; top:8px; left:10px; z-index:8; background:rgba(0,0,0,.48); border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:4px 8px; font-size:.66rem; font-weight:1000; letter-spacing:.08em; text-transform:uppercase; pointer-events:none;}
 
     /* GAME */
     #gameScreen{flex-direction:column; padding:calc(10px + var(--safe-top)) 10px calc(8px + var(--safe-bottom)); gap:8px;}
@@ -70,15 +105,14 @@
     .mode-box{background:var(--purple); color:#0c031c;}
     .meter-wrap{height:12px; border-radius:999px; overflow:hidden; background:rgba(0,0,0,.3); margin-top:6px;}
     .meter{height:100%; width:100%; background:rgba(255,255,255,.75); border-radius:999px; transition:width .2s linear;}
-
     .stage{flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,1fr) minmax(250px,340px); gap:8px;}
     .play-area{position:relative; border-radius:24px; background:rgba(65,65,65,.88); border:1px solid rgba(255,255,255,.18); overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:12px;}
-    .sound-pulse{width:min(220px,42vw); aspect-ratio:1; border-radius:999px; background:radial-gradient(circle, rgba(255,255,255,.9), rgba(80,176,255,.42) 35%, rgba(255,99,189,.18) 62%, rgba(0,0,0,.08)); border:3px solid rgba(255,255,255,.38); box-shadow:0 0 60px rgba(80,176,255,.22); display:flex; align-items:center; justify-content:center; text-align:center; padding:18px; font-weight:1000; letter-spacing:.04em; text-transform:uppercase; color:#111; transition:.22s transform,.22s filter,.22s box-shadow;}
+    .sound-pulse{width:min(220px,42vw); aspect-ratio:1; border-radius:999px; background:radial-gradient(circle, rgba(255,255,255,.9), rgba(80,176,255,.42) 35%, rgba(255,99,189,.18) 62%, rgba(0,0,0,.08)); border:3px solid rgba(255,255,255,.38); box-shadow:0 0 60px rgba(80,176,255,.22); display:flex; align-items:center; justify-content:center; text-align:center; padding:18px; font-weight:1000; letter-spacing:.04em; text-transform:uppercase; color:#111; transition:.22s transform,.22s filter,.22s box-shadow; cursor:pointer;}
     .sound-pulse.playing{transform:scale(1.08); filter:brightness(1.12); box-shadow:0 0 90px rgba(255,255,255,.38),0 0 120px rgba(80,176,255,.28);}
     .prompt-text{position:absolute; top:14px; left:14px; right:14px; text-align:center; padding:10px 12px; border-radius:16px; background:rgba(0,0,0,.36); font-weight:850; color:#fff;}
     .feedback{position:absolute; bottom:12px; left:12px; right:12px; min-height:46px; display:flex; align-items:center; justify-content:center; padding:9px 12px; border-radius:16px; background:rgba(0,0,0,.42); font-weight:900; text-align:center;}
-    .feedback.good{background:rgba(63,235,161,.8); color:#03120c;}
-    .feedback.bad{background:rgba(255,83,83,.84); color:#1d0000;}
+    .feedback.good{background:rgba(35,238,142,.88); color:#03120c;}
+    .feedback.bad{background:rgba(255,45,45,.9); color:#1d0000;}
     .feedback.info{background:rgba(80,176,255,.78); color:#03111c;}
     .side-panel{border-radius:24px; background:var(--panel); border:1px solid rgba(255,255,255,.16); padding:12px; display:flex; flex-direction:column; gap:10px; overflow:auto;}
     .challenge-card{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.13); border-radius:18px; padding:12px;}
@@ -99,22 +133,22 @@
     /* Piano */
     .keyboard-zone{height:clamp(190px, 28vh, 260px); min-height:170px; border-radius:22px 22px 12px 12px; background:rgba(0,0,0,.34); padding:12px 8px 8px; border:1px solid rgba(255,255,255,.18); position:relative; overflow:hidden;}
     .keyboard-inner{position:relative; height:100%; width:100%; max-width:1280px; margin:0 auto;}
-    .white-row{position:absolute; inset:0; display:grid; grid-template-columns:repeat(14,1fr); gap:2px; z-index:1;}
-    .key.white{position:relative; background:linear-gradient(#fff,#e9e9df); border:1px solid #aaa; border-radius:0 0 10px 10px; box-shadow:inset 0 -7px 0 rgba(0,0,0,.08); cursor:pointer; color:#111;}
-    .white .key-label{position:absolute; left:50%; bottom:9px; transform:translateX(-50%); font-size:clamp(.68rem, 1.7vw, .95rem); font-weight:1000; letter-spacing:.01em; color:#111; text-shadow:0 1px 0 rgba(255,255,255,.8);}
+    .white-row{position:absolute; inset:0; display:grid; gap:2px; z-index:1;}
+    .key.white{position:relative; background:linear-gradient(#fff,#e9e9df); border:1px solid #aaa; border-radius:0 0 10px 10px; box-shadow:inset 0 -7px 0 rgba(0,0,0,.08); cursor:pointer; color:#111; touch-action:none;}
+    .white .key-label{position:absolute; left:50%; bottom:9px; transform:translateX(-50%); font-size:clamp(.64rem, 1.55vw, .92rem); font-weight:1000; letter-spacing:.01em; color:#111; text-shadow:0 1px 0 rgba(255,255,255,.8);}
     .black-layer{position:absolute; inset:0; z-index:4; pointer-events:none;}
-    .key.black{position:absolute; top:0; width:5.1%; height:62%; background:linear-gradient(#222,#020202); border:1px solid #000; border-radius:0 0 8px 8px; box-shadow:inset 0 -9px 0 rgba(255,255,255,.05), 0 4px 10px rgba(0,0,0,.5); pointer-events:auto; cursor:pointer; color:#fff;}
-    .black .key-label{position:absolute; left:50%; top:53%; transform:translate(-50%,-50%); font-size:clamp(.56rem, 1.35vw, .78rem); font-weight:1000; text-align:center; line-height:1.05; color:#fff;}
-    .key.active{filter:brightness(1.25); box-shadow:0 0 0 3px rgba(80,176,255,.65), inset 0 -7px 0 rgba(0,0,0,.08), 0 0 24px rgba(80,176,255,.55)!important;}
-    .key.selected{outline:4px solid rgba(255,236,96,.95); outline-offset:-5px; filter:brightness(1.13);}
-    .key.correct-flash{animation:correct .45s ease;}
-    .key.wrong-flash{animation:wrong .45s ease;}
-    @keyframes correct{0%,100%{filter:brightness(1)}50%{filter:brightness(1.5) drop-shadow(0 0 15px rgba(63,235,161,.95));}}
-    @keyframes wrong{0%,100%{filter:brightness(1)}50%{filter:brightness(.78) drop-shadow(0 0 14px rgba(255,83,83,.95));}}
+    .key.black{position:absolute; top:0; height:62%; background:linear-gradient(#222,#020202); border:1px solid #000; border-radius:0 0 8px 8px; box-shadow:inset 0 -9px 0 rgba(255,255,255,.05), 0 4px 10px rgba(0,0,0,.5); pointer-events:auto; cursor:pointer; color:#fff; touch-action:none;}
+    .black .key-label{position:absolute; left:50%; top:53%; transform:translate(-50%,-50%); font-size:clamp(.5rem, 1.15vw, .74rem); font-weight:1000; text-align:center; line-height:1.05; color:#fff;}
+    .key.active{filter:brightness(1.18); box-shadow:0 0 0 3px rgba(80,176,255,.65), inset 0 -7px 0 rgba(0,0,0,.08), 0 0 24px rgba(80,176,255,.55)!important;}
+    .key.correct-hold,.key.correct-flash{background:var(--green)!important; color:#021208!important; box-shadow:0 0 0 4px rgba(35,238,142,.45), inset 0 -7px 0 rgba(0,0,0,.1), 0 0 24px rgba(35,238,142,.7)!important;}
+    .key.correct-hold .key-label,.key.correct-flash .key-label{color:#021208!important; text-shadow:none!important;}
+    .key.wrong-flash{background:var(--red)!important; color:#250000!important; box-shadow:0 0 0 4px rgba(255,45,45,.45), inset 0 -7px 0 rgba(0,0,0,.08), 0 0 24px rgba(255,45,45,.75)!important;}
+    .key.wrong-flash .key-label{color:#250000!important; text-shadow:none!important;}
+    .practice-active{filter:brightness(1.15); outline:4px solid rgba(50,245,255,.8); outline-offset:-5px;}
 
     .modal{position:absolute; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.42); z-index:50; padding:18px;}
     .modal.show{display:flex;}
-    .modal-card{width:min(640px,95vw); max-height:88vh; overflow:auto; background:rgba(24,24,24,.94); border:1px solid rgba(255,255,255,.22); border-radius:26px; padding:20px; box-shadow:0 24px 70px rgba(0,0,0,.45);}
+    .modal-card{width:min(680px,95vw); max-height:88vh; overflow:auto; background:rgba(24,24,24,.94); border:1px solid rgba(255,255,255,.22); border-radius:26px; padding:20px; box-shadow:0 24px 70px rgba(0,0,0,.45);}
     .modal-card h2{margin:0 0 10px; font-size:clamp(1.6rem,4vw,2.4rem); letter-spacing:-.04em;}
     .modal-card p{color:rgba(255,255,255,.82); line-height:1.45;}
     .modal-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;}
@@ -123,11 +157,15 @@
     .count-num{font-weight:1000; font-size:clamp(5rem, 22vw, 14rem); text-shadow:0 14px 0 rgba(0,0,0,.22); color:white; animation:pop .8s ease;}
     @keyframes pop{0%{transform:scale(.3); opacity:0}40%{transform:scale(1.08);opacity:1}100%{transform:scale(1);opacity:1}}
 
-    @media (max-width: 860px){
-      .home-grid{grid-template-columns:1fr;}
-      .instrument-grid{grid-template-columns:1fr;}
+    @media (max-width: 900px){
+      .home-grid,.instrument-grid,.home-actions{grid-template-columns:1fr;}
       .home-card{padding:16px; border-radius:22px;}
       .mode-card,.instrument-card{min-height:auto; padding:13px;}
+      .utility-top{align-items:stretch; flex-direction:column;}
+      .utility-actions{justify-content:stretch;}
+      .utility-actions .secondary-btn{flex:1;}
+      .practice-controls{grid-template-columns:1fr;}
+      .bank-grid{grid-template-columns:repeat(3,1fr);}
       .topbar{grid-template-columns:repeat(5,1fr); gap:5px; min-height:58px;}
       .hud-box{border-radius:13px; padding:7px 7px;}
       .hud-label{font-size:.54rem; letter-spacing:.09em;}
@@ -145,11 +183,13 @@
       .prompt-text{top:8px; left:8px; right:8px; font-size:.78rem; padding:7px; border-radius:12px;}
       .feedback{bottom:8px; left:8px; right:8px; min-height:36px; padding:6px; font-size:.78rem; border-radius:12px;}
       .keyboard-zone{height:clamp(165px, 31vh, 225px); min-height:145px; padding:8px 5px 5px; border-radius:18px 18px 8px 8px;}
-      .key.black{width:5.8%; height:58%;}
-      .white .key-label{bottom:7px; font-size:.62rem;}
-      .black .key-label{font-size:.5rem;}
+      .practice-keyboards{gap:7px;}
+      .practice-keyboard-zone{min-height:120px; padding:8px 5px 5px; border-radius:18px 18px 8px 8px;}
+      .key.black{height:58%;}
+      .white .key-label{bottom:7px; font-size:.58rem;}
+      .black .key-label{font-size:.46rem;}
     }
-    @media (max-height: 560px) and (orientation: landscape){
+    @media (max-height: 620px) and (orientation: landscape){
       #gameScreen{gap:5px; padding:calc(5px + var(--safe-top)) 6px calc(4px + var(--safe-bottom));}
       .topbar{min-height:44px;}
       .hud-label{display:none;}
@@ -162,6 +202,23 @@
       .control-grid{grid-template-columns:1fr 1fr;}
       .action-btn{min-height:34px; font-size:.66rem; padding:7px 5px;}
       .challenge-copy,.mini-list{font-size:.68rem;}
+      .utility-screen{gap:6px; padding:calc(6px + var(--safe-top)) 8px calc(6px + var(--safe-bottom));}
+      .utility-top{padding:8px; flex-direction:row; align-items:center;}
+      .utility-title{font-size:1.35rem;}
+      .practice-shell{gap:6px; grid-template-rows:auto 1fr;}
+      .practice-controls{grid-template-columns:1fr 1fr 1fr; gap:6px;}
+      .practice-panel{padding:7px; border-radius:16px;}
+      .practice-label{display:none;}
+      .meter-readout{min-height:38px; font-size:.9rem; border-radius:12px; padding:7px;}
+      .meter-sub{font-size:.64rem;}
+      .bank-btn{min-height:32px; padding:5px; font-size:.68rem; border-radius:10px;}
+      .tiny-btn{width:30px; height:30px; border-radius:9px;}
+      .status-pill{height:30px; font-size:.66rem;}
+      .collapse-row{margin-top:5px;}
+      .collapse-btn{padding:7px; border-radius:10px; font-size:.68rem;}
+      .practice-keyboards{grid-template-rows:1fr 1fr; gap:5px;}
+      .practice-keyboard-zone{min-height:88px; padding:5px 4px 4px;}
+      .row-tag{font-size:.5rem; padding:2px 6px; top:5px; left:6px;}
     }
   </style>
 </head>
@@ -182,7 +239,7 @@
         </div>
         <div class="mode-card mode-chord" data-mode="chord">
           <h3>Chord Mode</h3>
-          <p>Hear the chord, select every note inside it, then lock your answer. 45 seconds per level.</p>
+          <p>Hear the chord, then find every key inside it. 45 seconds per level. Level 3 adds color chords.</p>
         </div>
       </div>
 
@@ -198,14 +255,76 @@
         </div>
         <div class="instrument-card instrument-guitar" data-instrument="guitar">
           <h3>Realistic Guitar Style</h3>
-          <p>Plucked string-style synthesis with a light body resonance.</p>
+          <p>Plucked string-style synthesis with light acoustic body resonance.</p>
         </div>
       </div>
 
-      <div class="start-row">
-        <button class="main-btn" id="startBtn">Start Listening</button>
-        <button class="secondary-btn" id="howBtn">How to Play</button>
-        <span class="small-copy">Includes faint downtown traffic ambience. Audio starts after tapping Start.</span>
+      <div class="home-actions">
+        <button class="main-btn launch-btn" id="startBtn">Launch</button>
+        <button class="main-btn how-btn" id="howBtn">How to Play</button>
+        <button class="main-btn gallery-btn" id="galleryBtn">Gallery</button>
+        <button class="main-btn practice-btn" id="practiceBtn">Practice</button>
+      </div>
+      <div class="small-copy">Includes faint downtown traffic ambience during gameplay. Audio starts after tapping Launch or Practice.</div>
+    </section>
+  </main>
+
+  <main id="practiceScreen" class="screen utility-screen">
+    <section class="utility-top">
+      <div>
+        <div class="utility-title">Practice Lab</div>
+        <div class="small-copy">Play freely. The live meter names single notes, intervals, and exact chord qualities as you stack keys.</div>
+      </div>
+      <div class="utility-actions">
+        <button class="secondary-btn" id="practiceHomeBtn">Home</button>
+        <button class="secondary-btn" id="practiceLaunchBtn">Launch Game</button>
+      </div>
+    </section>
+
+    <section class="practice-shell">
+      <div class="practice-controls">
+        <div class="practice-panel">
+          <div class="practice-label">Sound Bank</div>
+          <div class="bank-grid" id="practiceBanks">
+            <button class="bank-btn instrument-rhodes selected" data-instrument="rhodes">Rhodes</button>
+            <button class="bank-btn instrument-piano" data-instrument="piano">Grand</button>
+            <button class="bank-btn instrument-guitar" data-instrument="guitar">Guitar</button>
+          </div>
+        </div>
+        <div class="practice-panel">
+          <div class="practice-label">Octave / Transpose</div>
+          <div class="octave-row">
+            <button class="tiny-btn" id="octaveDownBtn">−</button>
+            <div class="status-pill" id="octaveStatus">Oct C2</div>
+            <button class="tiny-btn" id="octaveUpBtn">+</button>
+            <button class="tiny-btn" id="transposeDownBtn">−</button>
+            <div class="status-pill" id="transposeStatus">Trans 0</div>
+            <button class="tiny-btn" id="transposeUpBtn">+</button>
+          </div>
+          <div class="collapse-row"><button class="collapse-btn" id="collapseKeyboardBtn">Collapse to One Keyboard</button></div>
+        </div>
+        <div class="practice-panel">
+          <div class="practice-label">Live Note / Chord Meter</div>
+          <div class="meter-readout" id="practiceMeter">Play a key</div>
+          <div class="meter-sub" id="practiceMeterSub">Top row is the lower register. Bottom row continues higher from the top row.</div>
+        </div>
+      </div>
+      <div class="practice-keyboards" id="practiceKeyboards">
+        <div class="practice-keyboard-zone"><div class="row-tag">Low Octaves</div><div class="keyboard-inner" id="practiceKeyboardLow"></div></div>
+        <div class="practice-keyboard-zone" id="practiceHighZone"><div class="row-tag">Higher Continuation</div><div class="keyboard-inner" id="practiceKeyboardHigh"></div></div>
+      </div>
+    </section>
+  </main>
+
+  <main id="galleryScreen" class="screen utility-screen">
+    <section class="utility-top">
+      <div class="utility-title">Gallery</div>
+      <div class="utility-actions"><button class="secondary-btn" id="galleryHomeBtn">Home</button></div>
+    </section>
+    <section class="gallery-wrap">
+      <div class="gallery-placeholder">
+        <h2>Gallery Placeholder</h2>
+        <p>This page is ready for your uploaded images, graphics, level art, player cards, or music education visuals. For now, it stays simple and gray so the layout can be swapped later.</p>
       </div>
     </section>
   </main>
@@ -237,7 +356,7 @@
         </div>
         <div class="control-grid">
           <button class="action-btn replay" id="replayBtn">Replay Sound</button>
-          <button class="action-btn submit" id="submitBtn">Lock Answer</button>
+          <button class="action-btn submit" id="submitBtn">Check Chord</button>
           <button class="action-btn clear" id="clearBtn">Clear</button>
           <button class="action-btn sound" id="trafficBtn">Traffic On</button>
           <button class="action-btn home" id="homeBtn">Home</button>
@@ -261,13 +380,12 @@
   <div class="modal" id="helpModal">
     <div class="modal-card">
       <h2>How to Play</h2>
-      <p><strong>Single Notes:</strong> the game plays one note. Tap the matching piano key. You get three tries per level and each level lasts 30 seconds.</p>
-      <p><strong>Chord Mode:</strong> the game plays a chord. Tap every key that belongs in that chord, then press <strong>Lock Answer</strong>. You get three tries per level and each level lasts 45 seconds.</p>
-      <p><strong>Level 3:</strong> single-note mode jumps across the full C-to-B keybed. Chord mode introduces color chords like major 7, minor 9, and dominant 9 shapes for a more neo-soul style challenge.</p>
-      <p>This file uses a built-in Web Audio synth engine so it can run as one HTML file on GitHub Pages without extra sound files. Later, you can swap the gray placeholders with your own art.</p>
-      <div class="modal-actions">
-        <button class="main-btn" id="closeHelpBtn">Got It</button>
-      </div>
+      <p><strong>Single Notes:</strong> the game plays one note. Nothing lights up until you make a guess. Correct taps turn opaque green with a success sound. Wrong taps turn opaque red with a miss sound. Three misses restarts the level.</p>
+      <p><strong>Chord Mode:</strong> the game plays a chord. Tap each key you hear. Correct chord tones turn green and stay selected. Wrong taps flash red immediately. Once all tones are found, the next chord loads.</p>
+      <p><strong>Practice:</strong> use two full playable rows. The top row is low, the second row continues higher. Use octave and transpose controls to shift the note labels and sound output in real time.</p>
+      <p><strong>Level 3:</strong> single-note mode jumps across the full C-to-B keybed. Chord mode introduces color chords like major 7, minor 9, dominant 9, and half-diminished shapes.</p>
+      <p>This file uses a built-in Web Audio instrument engine so it can run as one HTML file on GitHub Pages without extra sound files.</p>
+      <div class="modal-actions"><button class="main-btn" id="closeHelpBtn">Got It</button></div>
     </div>
   </div>
 
@@ -290,29 +408,52 @@
     'use strict';
 
     const NOTE_NAMES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
-    const WHITE_NAMES = ['C','D','E','F','G','A','B'];
-    const BLACK_AFTER_WHITE = {0:'C#', 1:'D#', 3:'F#', 4:'G#', 5:'A#'};
-    const ALL_NOTES = [];
-    for(let midi=48; midi<=71; midi++){
-      const name = NOTE_NAMES[midi % 12];
+    const FLAT_EQUIV = {'C#':'D♭','D#':'E♭','F#':'G♭','G#':'A♭','A#':'B♭'};
+    const CHORD_PATTERNS = [
+      {name:'maj9', intervals:[0,2,4,7,11]}, {name:'9', intervals:[0,2,4,7,10]}, {name:'m9', intervals:[0,2,3,7,10]},
+      {name:'maj7', intervals:[0,4,7,11]}, {name:'7', intervals:[0,4,7,10]}, {name:'m7', intervals:[0,3,7,10]}, {name:'mMaj7', intervals:[0,3,7,11]},
+      {name:'ø7', intervals:[0,3,6,10]}, {name:'dim7', intervals:[0,3,6,9]}, {name:'6', intervals:[0,4,7,9]}, {name:'m6', intervals:[0,3,7,9]},
+      {name:'add9', intervals:[0,2,4,7]}, {name:'madd9', intervals:[0,2,3,7]}, {name:'sus2', intervals:[0,2,7]}, {name:'sus4', intervals:[0,5,7]},
+      {name:'aug', intervals:[0,4,8]}, {name:'dim', intervals:[0,3,6]}, {name:'maj', intervals:[0,4,7]}, {name:'m', intervals:[0,3,7]},
+      {name:'5', intervals:[0,7]}, {name:'tritone', intervals:[0,6]}, {name:'major 3rd', intervals:[0,4]}, {name:'minor 3rd', intervals:[0,3]},
+      {name:'whole step', intervals:[0,2]}, {name:'half step', intervals:[0,1]}, {name:'perfect 4th', intervals:[0,5]}, {name:'perfect 5th', intervals:[0,7]}
+    ];
+
+    function midiInfo(midi){
+      const name = NOTE_NAMES[((midi % 12)+12)%12];
       const octave = Math.floor(midi / 12) - 1;
-      ALL_NOTES.push({midi, name, octave, id:`${name}${octave}`.replace('#','s'), label:`${name}${octave}`, pc:name, freq:440 * Math.pow(2,(midi-69)/12), isBlack:name.includes('#')});
+      return {midi, name, octave, label:`${name}${octave}`, pc:name, freq:440 * Math.pow(2,(midi-69)/12), isBlack:name.includes('#')};
     }
+    function displayNoteName(name){ return name.replace('#','♯'); }
+    function displayLabel(label){ return label.replace('#','♯'); }
+    function noteNameForPc(pc){ return displayNoteName(NOTE_NAMES[((pc%12)+12)%12]); }
+    function isBlackMidi(midi){ return NOTE_NAMES[((midi%12)+12)%12].includes('#'); }
+    function clamp(v,min,max){return Math.min(max, Math.max(min, v));}
+    function pick(arr){return arr[Math.floor(Math.random()*arr.length)];}
+    function uniq(arr){return [...new Set(arr)];}
+    function sameSet(a,b){ if(a.length !== b.length) return false; const A=[...a].sort(); const B=[...b].sort(); return A.every((x,i)=>x===B[i]); }
+    function prettyList(labels){return labels.map(displayLabel).join(' • ');}
+
+    const ALL_NOTES = [];
+    for(let midi=48; midi<=71; midi++) ALL_NOTES.push(midiInfo(midi));
     const noteByLabel = Object.fromEntries(ALL_NOTES.map(n=>[n.label,n]));
-    const noteByMidi = Object.fromEntries(ALL_NOTES.map(n=>[n.midi,n]));
-    const whiteNotes = ALL_NOTES.filter(n=>!n.isBlack);
-    const blackNotes = ALL_NOTES.filter(n=>n.isBlack);
 
     const game = {
       mode:'note', instrument:'rhodes', level:1, score:0, levelScore:0, streak:0, lives:3,
       timeLeft:30, levelDuration:30, running:false, current:null, selected:[], challengeStarted:false,
-      audio:null, master:null, ambience:null, trafficOn:true, timerId:null, lastTick:0, correctCount:0,
+      audio:null, master:null, ambience:null, trafficOn:true, lastTick:0, correctCount:0,
       repeatPenalty:0, awaitingNext:false
     };
+    const practice = {baseMidi:36, transpose:0, collapsed:false, held:new Map(), instrument:'rhodes'};
 
     const els = {
-      home: document.getElementById('homeScreen'), game: document.getElementById('gameScreen'),
-      startBtn: document.getElementById('startBtn'), howBtn: document.getElementById('howBtn'),
+      home: document.getElementById('homeScreen'), game: document.getElementById('gameScreen'), practice: document.getElementById('practiceScreen'), gallery: document.getElementById('galleryScreen'),
+      startBtn: document.getElementById('startBtn'), howBtn: document.getElementById('howBtn'), galleryBtn: document.getElementById('galleryBtn'), practiceBtn: document.getElementById('practiceBtn'),
+      galleryHomeBtn: document.getElementById('galleryHomeBtn'), practiceHomeBtn: document.getElementById('practiceHomeBtn'), practiceLaunchBtn: document.getElementById('practiceLaunchBtn'),
+      practiceBanks: document.getElementById('practiceBanks'), practiceMeter: document.getElementById('practiceMeter'), practiceMeterSub: document.getElementById('practiceMeterSub'),
+      octaveDownBtn: document.getElementById('octaveDownBtn'), octaveUpBtn: document.getElementById('octaveUpBtn'), transposeDownBtn: document.getElementById('transposeDownBtn'), transposeUpBtn: document.getElementById('transposeUpBtn'),
+      octaveStatus: document.getElementById('octaveStatus'), transposeStatus: document.getElementById('transposeStatus'), collapseKeyboardBtn: document.getElementById('collapseKeyboardBtn'),
+      practiceKeyboards: document.getElementById('practiceKeyboards'), practiceKeyboardLow: document.getElementById('practiceKeyboardLow'), practiceKeyboardHigh: document.getElementById('practiceKeyboardHigh'), practiceHighZone: document.getElementById('practiceHighZone'),
       helpModal: document.getElementById('helpModal'), closeHelpBtn: document.getElementById('closeHelpBtn'),
       resultModal: document.getElementById('resultModal'), resultTitle: document.getElementById('resultTitle'), resultBody: document.getElementById('resultBody'),
       nextLevelBtn: document.getElementById('nextLevelBtn'), resultRestartBtn: document.getElementById('resultRestartBtn'), resultHomeBtn: document.getElementById('resultHomeBtn'),
@@ -325,19 +466,14 @@
       countdown: document.getElementById('countdown'), countNum: document.getElementById('countNum')
     };
 
-    function clamp(v,min,max){return Math.min(max, Math.max(min, v));}
-    function pick(arr){return arr[Math.floor(Math.random()*arr.length)];}
-    function shuffle(arr){return arr.slice().sort(()=>Math.random()-.5);}
-    function uniq(arr){return [...new Set(arr)];}
-    function sameSet(a,b){
-      if(a.length !== b.length) return false;
-      const A = [...a].sort(); const B = [...b].sort();
-      return A.every((x,i)=>x===B[i]);
-    }
-    function prettyList(labels){return labels.map(x=>x.replace('#','♯')).join(' • ');}
     function setFeedback(text,type='info'){
       els.feedback.className = `feedback ${type}`;
       els.feedback.textContent = text;
+    }
+
+    function showScreen(screen){
+      [els.home, els.game, els.practice, els.gallery].forEach(s=>s.classList.remove('active'));
+      screen.classList.add('active');
     }
 
     function initAudio(){
@@ -388,7 +524,6 @@
       const bellEg = envGain(ctx, when, .002, .12, .0006, .08, Math.min(.38,dur), .18);
       bell.connect(bellEg).connect(filter); bell.start(when); bell.stop(when+.42);
       filter.connect(out).connect(game.master);
-      return out;
     }
 
     function playPiano(freq, when=game.audio.currentTime, dur=1.35, velocity=1){
@@ -414,7 +549,6 @@
       const hGain = ctx.createGain(); hGain.gain.value=.035*velocity;
       hammer.connect(hFilter).connect(hGain).connect(filter); hammer.start(when); hammer.stop(when+.03);
       filter.connect(out).connect(game.master);
-      return out;
     }
 
     function playGuitar(freq, when=game.audio.currentTime, dur=1.05, velocity=1){
@@ -436,33 +570,37 @@
       const pluckGain = envGain(ctx, when, .001, .035, .001, .04, .09, .75);
       noise.connect(pluckGain).connect(delay);
       noise.start(when); noise.stop(when+.1);
-      // Add a quiet pitch anchor so lower notes stay identifiable.
       const anchor = ctx.createOscillator(); anchor.type='triangle'; anchor.frequency.setValueAtTime(freq, when);
       const aGain = envGain(ctx, when, .006, .18, .015, .25, dur, .16);
       anchor.connect(aGain).connect(body); anchor.start(when); anchor.stop(when+dur+.08);
     }
 
-    function playNote(note, dur=1.1, delay=0, vel=1){
+    function playToneByMidi(midi, dur=1.1, delay=0, vel=1, instrument=game.instrument){
       resumeAudio();
       const when = game.audio.currentTime + delay;
-      pulseVisual(dur+delay);
-      if(game.instrument === 'rhodes') playRhodes(note.freq, when, dur, vel);
-      else if(game.instrument === 'piano') playPiano(note.freq, when, dur, vel);
-      else playGuitar(note.freq, when, Math.min(dur,1.25), vel);
-      flashKey(note.label, Math.min(320, dur*260), false);
+      const freq = 440 * Math.pow(2,(midi-69)/12);
+      if(instrument === 'rhodes') playRhodes(freq, when, dur, vel);
+      else if(instrument === 'piano') playPiano(freq, when, dur, vel);
+      else playGuitar(freq, when, Math.min(dur,1.25), vel);
     }
+    function playTone(note, dur=1.1, delay=0, vel=1, instrument=game.instrument){ playToneByMidi(note.midi, dur, delay, vel, instrument); }
 
-    function playChallenge(){
-      if(!game.current) return;
+    function playCorrectSfx(){
       resumeAudio();
-      if(game.mode === 'note'){
-        playNote(game.current.note, .95, 0, 1);
-      } else {
-        const notes = game.current.notes.map(l=>noteByLabel[l]).filter(Boolean);
-        const isGuitar = game.instrument === 'guitar';
-        notes.forEach((n,i)=>playNote(n, 1.45, isGuitar ? i*.035 : i*.008, .82));
-      }
-      game.repeatPenalty = Math.min(game.repeatPenalty + 1, 3);
+      const ctx = game.audio, now = ctx.currentTime;
+      [523.25, 659.25, 783.99].forEach((freq,i)=>{
+        const o = ctx.createOscillator(); o.type='sine'; o.frequency.value=freq;
+        const g = envGain(ctx, now+i*.045, .006, .05, .02, .08, .22, .13);
+        o.connect(g).connect(game.master); o.start(now+i*.045); o.stop(now+i*.27);
+      });
+    }
+    function playWrongSfx(){
+      resumeAudio();
+      const ctx = game.audio, now = ctx.currentTime;
+      const o = ctx.createOscillator(); o.type='sawtooth'; o.frequency.setValueAtTime(145, now); o.frequency.exponentialRampToValueAtTime(72, now+.28);
+      const f = ctx.createBiquadFilter(); f.type='lowpass'; f.frequency.value=460;
+      const g = envGain(ctx, now, .005, .03, .045, .12, .36, .16);
+      o.connect(f).connect(g).connect(game.master); o.start(now); o.stop(now+.38);
     }
 
     function pulseVisual(duration=.8){
@@ -496,86 +634,96 @@
         osc.start(now); osc.stop(now+3.9);
         scheduleNext();
       }
-      function scheduleNext(){
-        clearTimeout(carTimer);
-        carTimer = setTimeout(carPass, 3500 + Math.random()*6500);
-      }
+      function scheduleNext(){ clearTimeout(carTimer); carTimer = setTimeout(carPass, 3500 + Math.random()*6500); }
       scheduleNext();
-      return {
-        gain: ambGain,
-        set(on){ ambGain.gain.cancelScheduledValues(ctx.currentTime); ambGain.gain.linearRampToValueAtTime(on ? .19 : 0.0, ctx.currentTime + .9); },
-        stop(){ clearTimeout(carTimer); }
-      };
+      return { gain:ambGain, set(on){ ambGain.gain.cancelScheduledValues(ctx.currentTime); ambGain.gain.linearRampToValueAtTime(on ? .19 : 0.0, ctx.currentTime + .9); }, stop(){ clearTimeout(carTimer); } };
     }
 
-    function buildKeyboard(){
-      els.keyboard.innerHTML = '<div class="white-row" id="whiteRow"></div><div class="black-layer" id="blackLayer"></div>';
-      const whiteRow = document.getElementById('whiteRow');
-      const blackLayer = document.getElementById('blackLayer');
-      whiteNotes.forEach(n=>{
+    function makeKeyboard(container, physicalStartMidi, count, context, transpose=0){
+      const notes = Array.from({length:count}, (_,i)=>midiInfo(physicalStartMidi+i));
+      const whitePhysical = notes.filter(n=>!n.isBlack);
+      const blackPhysical = notes.filter(n=>n.isBlack);
+      const blackW = whitePhysical.length > 14 ? 4.8 : 5.1;
+      container.innerHTML = `<div class="white-row" style="grid-template-columns:repeat(${whitePhysical.length},1fr)"></div><div class="black-layer"></div>`;
+      const whiteRow = container.querySelector('.white-row');
+      const blackLayer = container.querySelector('.black-layer');
+      whitePhysical.forEach(phys=>{
+        const sounding = midiInfo(phys.midi + transpose);
         const key = document.createElement('button');
-        key.className = 'key white'; key.dataset.label=n.label; key.dataset.midi=n.midi; key.setAttribute('aria-label', n.label);
-        key.innerHTML = `<span class="key-label">${n.label.replace('#','♯')}</span>`;
-        key.addEventListener('pointerdown', onKeyPress);
+        key.className = 'key white'; key.dataset.label=sounding.label; key.dataset.midi=sounding.midi; key.dataset.physical=phys.midi; key.setAttribute('aria-label', sounding.label);
+        key.innerHTML = `<span class="key-label">${displayLabel(sounding.label)}</span>`;
+        attachKeyHandler(key, context);
         whiteRow.appendChild(key);
       });
-      // Black keys are positioned between the 14 visible white keys. 14 white keys = C3 through B4.
-      blackNotes.forEach(n=>{
-        const whiteIndexBefore = whiteNotes.findIndex(w => w.midi > n.midi) - 1;
-        const center = ((whiteIndexBefore + 1) / whiteNotes.length) * 100;
+      blackPhysical.forEach(phys=>{
+        const sounding = midiInfo(phys.midi + transpose);
+        const whiteIndexBefore = whitePhysical.findIndex(w => w.midi > phys.midi) - 1;
+        const center = ((whiteIndexBefore + 1) / whitePhysical.length) * 100;
         const key = document.createElement('button');
-        key.className = 'key black'; key.dataset.label=n.label; key.dataset.midi=n.midi; key.setAttribute('aria-label', n.label);
-        key.style.left = `calc(${center}% - 2.55%)`;
-        key.innerHTML = `<span class="key-label">${n.label.replace('#','♯')}</span>`;
-        key.addEventListener('pointerdown', onKeyPress);
+        key.className = 'key black'; key.dataset.label=sounding.label; key.dataset.midi=sounding.midi; key.dataset.physical=phys.midi; key.setAttribute('aria-label', sounding.label);
+        key.style.width = `${blackW}%`;
+        key.style.left = `calc(${center}% - ${blackW/2}%)`;
+        key.innerHTML = `<span class="key-label">${displayLabel(sounding.label)}</span>`;
+        attachKeyHandler(key, context);
         blackLayer.appendChild(key);
       });
     }
 
-    function flashKey(label, ms=260, selectedFlash=true){
-      const key = document.querySelector(`.key[data-label="${label}"]`);
-      if(!key) return;
-      key.classList.add(selectedFlash ? 'active' : 'active');
-      setTimeout(()=>key.classList.remove('active'), ms);
-    }
-    function markKeys(labels, className){
-      labels.forEach(label=>{
-        const key = document.querySelector(`.key[data-label="${label}"]`);
-        if(key){ key.classList.add(className); setTimeout(()=>key.classList.remove(className), 500); }
-      });
-    }
-    function clearKeySelection(){
-      document.querySelectorAll('.key.selected').forEach(k=>k.classList.remove('selected'));
-    }
-
-    function onKeyPress(e){
-      e.preventDefault();
-      if(!game.running || game.awaitingNext) return;
-      resumeAudio();
-      const label = e.currentTarget.dataset.label;
-      const note = noteByLabel[label];
-      // Always preview the tapped key very softly for tactile feedback.
-      playNote(note, .38, 0, .38);
-      if(game.mode === 'note'){
-        submitSingle(label);
-      }else{
-        toggleChordSelection(label, e.currentTarget);
+    function attachKeyHandler(key, context){
+      if(context === 'game') key.addEventListener('pointerdown', onGameKeyPress);
+      if(context === 'practice'){
+        key.addEventListener('pointerdown', onPracticeDown);
+        key.addEventListener('pointerup', onPracticeUp);
+        key.addEventListener('pointercancel', onPracticeUp);
+        key.addEventListener('lostpointercapture', onPracticeUp);
       }
     }
+    function buildGameKeyboard(){ makeKeyboard(els.keyboard, 48, 24, 'game', 0); }
+    function buildPracticeKeyboards(){
+      practice.held.clear();
+      makeKeyboard(els.practiceKeyboardLow, practice.baseMidi, 24, 'practice', practice.transpose);
+      makeKeyboard(els.practiceKeyboardHigh, practice.baseMidi + 24, 24, 'practice', practice.transpose);
+      els.practiceKeyboards.classList.toggle('collapsed', practice.collapsed);
+      els.practiceHighZone.classList.toggle('hidden', practice.collapsed);
+      updatePracticeControls();
+      updatePracticeMeter();
+    }
 
-    function toggleChordSelection(label, keyEl){
-      if(game.selected.includes(label)) game.selected = game.selected.filter(x=>x!==label);
-      else game.selected.push(label);
-      keyEl.classList.toggle('selected');
-      updateAnswerDisplay();
-      const needed = game.current?.notes?.length || 0;
-      setFeedback(`Selected ${game.selected.length}/${needed}. Tap all notes in the chord, then lock your answer.`, 'info');
+    function flashGameKey(label, className, ms=620){
+      const key = els.keyboard.querySelector(`.key[data-label="${label}"]`);
+      if(!key) return;
+      key.classList.add(className);
+      setTimeout(()=>key.classList.remove(className), ms);
+    }
+    function holdGameKey(label){
+      const key = els.keyboard.querySelector(`.key[data-label="${label}"]`);
+      if(key) key.classList.add('correct-hold');
+    }
+    function clearGameHighlights(){
+      els.keyboard.querySelectorAll('.correct-hold,.correct-flash,.wrong-flash,.active').forEach(k=>k.classList.remove('correct-hold','correct-flash','wrong-flash','active'));
+    }
+
+    function onGameKeyPress(e){
+      e.preventDefault();
+      if(!game.running || game.awaitingNext || !game.current) return;
+      resumeAudio();
+      const label = e.currentTarget.dataset.label;
+      const midi = Number(e.currentTarget.dataset.midi);
+      playToneByMidi(midi, .32, 0, .34, game.instrument);
+      if(game.mode === 'note') submitSingle(label);
+      else chordTap(label);
     }
 
     function updateAnswerDisplay(){
       const arr = game.mode === 'chord' ? game.selected : (game.current?.guess?[game.current.guess]:[]);
       if(!arr || arr.length===0){ els.answerDisplay.innerHTML='<span class="chip">—</span>'; return; }
-      els.answerDisplay.innerHTML = arr.sort((a,b)=>noteByLabel[a].midi-noteByLabel[b].midi).map(x=>`<span class="chip">${x.replace('#','♯')}</span>`).join('');
+      els.answerDisplay.innerHTML = arr.slice().sort((a,b)=>midiInfoFromAnyLabel(a).midi-midiInfoFromAnyLabel(b).midi).map(x=>`<span class="chip">${displayLabel(x)}</span>`).join('');
+    }
+    function midiInfoFromAnyLabel(label){
+      const m = label.match(/^([A-G]#?)(-?\d+)$/);
+      if(!m) return {midi:0};
+      const pc = NOTE_NAMES.indexOf(m[1]);
+      return {midi:(Number(m[2])+1)*12+pc};
     }
 
     const noteLevelPools = {
@@ -594,21 +742,18 @@
         {name:'G Minor', notes:['G3','A#3','D4']}
       ],
       3: [
-        {name:'Cmaj9', notes:['C3','E3','G3','B3','D4']},
-        {name:'Dm9', notes:['D3','F3','A3','C4','E4']},
-        {name:'Em7', notes:['E3','G3','B3','D4']},
-        {name:'Fmaj9', notes:['F3','A3','C4','E4','G4']},
-        {name:'G9', notes:['G3','B3','D4','F4','A4']},
-        {name:'Am9', notes:['A3','C4','E4','G4','B4']},
-        {name:'Bø7', notes:['B3','D4','F4','A4']}
+        {name:'Cmaj9', notes:['C3','E3','G3','B3','D4']}, {name:'Dm9', notes:['D3','F3','A3','C4','E4']},
+        {name:'Em7', notes:['E3','G3','B3','D4']}, {name:'Fmaj9', notes:['F3','A3','C4','E4','G4']},
+        {name:'G9', notes:['G3','B3','D4','F4','A4']}, {name:'Am9', notes:['A3','C4','E4','G4','B4']},
+        {name:'Bø7', notes:['B3','D4','F4','A4']}, {name:'C#dim7', notes:['C#3','E3','G3','A#3']},
+        {name:'Ebmaj7', notes:['D#3','G3','A#3','D4']}
       ]
     };
 
     function nextChallenge(autoPlay=true){
-      clearKeySelection(); game.selected=[]; game.current=null; game.repeatPenalty=0;
+      clearGameHighlights(); game.selected=[]; game.current=null; game.repeatPenalty=0;
       if(game.mode === 'note'){
-        const pool = noteLevelPools[game.level];
-        const note = pick(pool);
+        const note = pick(noteLevelPools[game.level]);
         game.current = {note, answer:[note.label], guess:null};
         els.soundPulse.innerHTML = 'Listen<br>for one note';
         els.promptText.textContent = game.level === 3 ? 'Level 3: full-range note jumps. Listen for octave placement.' : 'Listen for the note, then tap the matching key.';
@@ -616,98 +761,95 @@
         const chord = pick(chordLevels[game.level]);
         game.current = {...chord, answer:chord.notes.slice()};
         els.soundPulse.innerHTML = `${chord.notes.length}<br>keys`;
-        els.promptText.textContent = game.level === 3 ? 'Level 3: color chords. Select every chord tone you hear.' : 'Select every note in the chord, then lock your answer.';
+        els.promptText.textContent = game.level === 3 ? 'Level 3: color chords. Select every chord tone you hear.' : 'Tap the notes inside the chord. Correct tones turn green.';
       }
-      updateAnswerDisplay();
-      updateChallengeText();
-      setFeedback(autoPlay ? 'Listen carefully...' : 'Press Replay Sound when ready.', 'info');
+      updateAnswerDisplay(); updateChallengeText();
+      setFeedback(autoPlay ? 'Listen carefully. Nothing lights up until you answer.' : 'Press Replay Sound when ready.', 'info');
       if(autoPlay) setTimeout(()=>playChallenge(), 260);
+    }
+
+    function playChallenge(){
+      if(!game.current) return;
+      resumeAudio(); pulseVisual(game.mode === 'note' ? .95 : 1.5);
+      if(game.mode === 'note') playTone(game.current.note, .95, 0, 1, game.instrument);
+      else {
+        const notes = game.current.notes.map(l=>noteByLabel[l]).filter(Boolean);
+        const isGuitar = game.instrument === 'guitar';
+        notes.forEach((n,i)=>playTone(n, 1.45, isGuitar ? i*.035 : i*.008, .82, game.instrument));
+      }
+      game.repeatPenalty = Math.min(game.repeatPenalty + 1, 3);
     }
 
     function updateChallengeText(){
       if(game.mode === 'note'){
         const titles = ['Level 1: Ear Warm-Up','Level 2: Sharps Join In','Level 3: Full Keybed Sprint'];
-        const copies = [
-          'White-key notes only, C3 through B3. Learn the core layout first.',
-          'All notes in the first octave are active, including sharps.',
-          'The whole C-to-B keybed is active, so octave placement matters.'
-        ];
-        els.challengeTitle.textContent = titles[game.level-1];
-        els.challengeCopy.textContent = copies[game.level-1];
-        els.tipList.innerHTML = '<li>Hum the note before tapping.</li><li>Low keys are left, higher keys are right.</li>';
+        const copies = ['White-key notes only, C3 through B3. Learn the core layout first.','All notes in the first octave are active, including sharps.','The whole C-to-B keybed is active, so octave placement matters.'];
+        els.challengeTitle.textContent = titles[game.level-1]; els.challengeCopy.textContent = copies[game.level-1];
+        els.tipList.innerHTML = '<li>Nothing lights up until you tap.</li><li>Wrong guesses stay on the same note until you find it or run out of tries.</li>';
       } else {
         const titles = ['Level 1: Major / Minor Triads','Level 2: Sharper Chord Shapes','Level 3: Neo-Soul Color Chords'];
-        const copies = [
-          'Major and minor triads only. Select 3 notes for each answer.',
-          'Triads now include black-key roots and trickier spacing.',
-          'Major 7, minor 9, 9th, and half-diminished colors. Select 4–5 notes.'
-        ];
-        els.challengeTitle.textContent = titles[game.level-1];
-        els.challengeCopy.textContent = copies[game.level-1];
-        els.tipList.innerHTML = '<li>Listen for the bottom note first.</li><li>Count the selected keys before locking.</li><li>Color chords often need 4 or 5 notes.</li>';
+        const copies = ['Major and minor triads only. Select 3 notes for each answer.','Triads now include black-key roots and trickier spacing.','Major 7, minor 9, 9th, diminished, and half-diminished colors. Select 4–5 notes.'];
+        els.challengeTitle.textContent = titles[game.level-1]; els.challengeCopy.textContent = copies[game.level-1];
+        els.tipList.innerHTML = '<li>Correct chord tones turn green immediately.</li><li>Wrong tones flash red and cost one try.</li><li>The chord clears only when all tones are found.</li>';
       }
     }
 
     function submitSingle(label){
-      if(!game.current) return;
-      game.current.guess = label;
-      updateAnswerDisplay();
-      if(label === game.current.answer[0]){
-        scoreCorrect([label]);
-      } else {
-        scoreWrong([label], game.current.answer);
-      }
+      game.current.guess = label; updateAnswerDisplay();
+      if(label === game.current.answer[0]) scoreCorrect([label]);
+      else wrongAttempt([label]);
+    }
+
+    function chordTap(label){
+      const answer = game.current.answer;
+      if(answer.includes(label)){
+        if(!game.selected.includes(label)){
+          game.selected.push(label);
+          holdGameKey(label); playCorrectSfx(); updateAnswerDisplay();
+          const remaining = answer.length - game.selected.length;
+          setFeedback(remaining > 0 ? `Correct tone. ${remaining} more to find.` : 'Chord complete!', 'good');
+          if(sameSet(game.selected, answer)) setTimeout(()=>scoreCorrect(game.selected.slice()), 360);
+        } else {
+          setFeedback(`${displayLabel(label)} is already selected. Keep building the chord.`, 'info');
+        }
+      } else wrongAttempt([label]);
     }
 
     function submitChord(){
       if(game.mode !== 'chord' || !game.current || game.awaitingNext) return;
-      const selected = uniq(game.selected);
-      if(selected.length===0){ setFeedback('Tap the notes you hear first, then lock your answer.', 'bad'); return; }
-      if(sameSet(selected, game.current.answer)) scoreCorrect(selected);
-      else scoreWrong(selected, game.current.answer);
+      if(sameSet(game.selected, game.current.answer)) scoreCorrect(game.selected.slice());
+      else setFeedback('Keep listening. Green keys are correct, but the chord is not complete yet.', 'info');
     }
 
     function scoreCorrect(labels){
-      game.correctCount++;
-      game.streak++;
+      if(game.awaitingNext) return;
+      game.correctCount++; game.streak++;
       const timeBonus = Math.ceil(game.timeLeft * (game.mode==='note' ? 1.2 : .9));
       const streakBonus = Math.min(25, game.streak*4);
       const repeatCost = game.repeatPenalty > 1 ? (game.repeatPenalty-1)*4 : 0;
       const base = game.mode==='note' ? 45 : (game.level===3 ? 85 : 65);
       const gained = Math.max(15, base + timeBonus + streakBonus - repeatCost);
       game.score += gained; game.levelScore += gained;
-      markKeys(labels, 'correct-flash');
+      labels.forEach(label=>flashGameKey(label, 'correct-flash', 760));
+      playCorrectSfx();
       setFeedback(`Correct +${gained}! ${game.streak>1 ? 'Streak x'+game.streak : 'Nice ear.'}`, 'good');
-      game.awaitingNext = true;
-      setTimeout(()=>{ game.awaitingNext=false; nextChallenge(true); }, 860);
-      updateHud();
+      game.awaitingNext = true; updateHud();
+      setTimeout(()=>{ game.awaitingNext=false; nextChallenge(true); }, 900);
     }
 
-    function scoreWrong(guessLabels, answerLabels){
-      game.lives--; game.streak = 0;
-      game.score = Math.max(0, game.score - 12);
-      markKeys(guessLabels, 'wrong-flash');
-      markKeys(answerLabels, 'correct-flash');
-      const answer = prettyList(answerLabels);
-      setFeedback(`Not quite. Correct: ${answer}. ${game.lives>0 ? game.lives + ' tries left.' : 'Level restarting.'}`, 'bad');
-      game.awaitingNext = true;
+    function wrongAttempt(labels){
+      game.lives--; game.streak = 0; game.score = Math.max(0, game.score - 12);
+      labels.forEach(label=>flashGameKey(label, 'wrong-flash', 760));
+      playWrongSfx();
+      setFeedback(game.lives>0 ? `Not that key. Try again. ${game.lives} tries left.` : 'Three misses. Level restarting.', 'bad');
       updateHud();
-      if(game.lives <= 0){
-        setTimeout(()=>restartLevelAfterMiss(), 1200);
-      } else {
-        setTimeout(()=>{ game.awaitingNext=false; nextChallenge(true); }, 1180);
-      }
+      if(game.lives <= 0){ game.awaitingNext = true; setTimeout(restartLevelAfterMiss, 900); }
     }
 
     function restartLevelAfterMiss(){
-      game.awaitingNext = false;
-      game.lives = 3;
-      game.streak = 0;
-      game.levelScore = 0;
-      game.timeLeft = game.levelDuration;
-      setFeedback('Three misses. Current level restarted. Listen again.', 'bad');
-      clearKeySelection(); game.selected=[];
-      updateHud(); nextChallenge(true);
+      game.awaitingNext = false; game.lives = 3; game.streak = 0; game.levelScore = 0; game.timeLeft = game.levelDuration;
+      clearGameHighlights(); game.selected=[]; updateHud(); updateAnswerDisplay();
+      setFeedback('Current level restarted. Listen again.', 'bad'); nextChallenge(true);
     }
 
     function updateHud(){
@@ -727,126 +869,173 @@
       if(!game.running) return;
       if(!game.lastTick) game.lastTick = timestamp;
       const dt = Math.min(.12, (timestamp - game.lastTick)/1000);
-      game.lastTick = timestamp;
-      game.timeLeft -= dt;
-      if(game.timeLeft <= 0){
-        game.timeLeft = 0; updateHud(); completeLevel(); return;
-      }
-      updateHud();
-      requestAnimationFrame(timerLoop);
+      game.lastTick = timestamp; game.timeLeft -= dt;
+      if(game.timeLeft <= 0){ game.timeLeft = 0; updateHud(); completeLevel(); return; }
+      updateHud(); requestAnimationFrame(timerLoop);
     }
 
     function completeLevel(){
       game.running = false; game.awaitingNext = true;
       const bonus = game.lives * 35 + game.correctCount * 8;
-      game.score += bonus;
-      updateHud();
+      game.score += bonus; updateHud();
       els.resultModal.classList.add('show');
       if(game.level < 3){
         els.resultTitle.textContent = `Level ${game.level} Complete`;
         els.resultBody.textContent = `You scored ${game.levelScore} on this level, earned a ${bonus}-point survival bonus, and are ready for Level ${game.level+1}.`;
         els.nextLevelBtn.textContent = 'Next Level';
-        els.nextLevelBtn.style.display = '';
       }else{
         els.resultTitle.textContent = 'Game Complete';
         els.resultBody.textContent = `Final score: ${game.score}. You finished ${game.mode === 'note' ? 'Single Notes' : 'Chord Mode'} with the ${game.instrument} sound.`;
         els.nextLevelBtn.textContent = 'Play Again';
-        els.nextLevelBtn.style.display = '';
       }
-    }
-
-    function startGame(){
-      resumeAudio();
-      els.home.classList.remove('active'); els.game.classList.add('active');
-      els.resultModal.classList.remove('show'); els.helpModal.classList.remove('show');
-      game.level=1; game.score=0; setupLevel();
-      if(game.ambience) game.ambience.set(game.trafficOn);
-      showCountdown(()=>{
-        game.running = true; game.lastTick = 0; game.challengeStarted = true;
-        nextChallenge(true); requestAnimationFrame(timerLoop);
-      });
     }
 
     function setupLevel(){
       game.levelDuration = game.mode === 'note' ? 30 : 45;
       game.timeLeft = game.levelDuration; game.lives=3; game.streak=0; game.levelScore=0; game.correctCount=0; game.awaitingNext=false; game.selected=[];
-      clearKeySelection(); updateHud(); updateChallengeText(); updateAnswerDisplay();
+      clearGameHighlights(); updateHud(); updateChallengeText(); updateAnswerDisplay();
     }
-
+    function startGame(){
+      resumeAudio(); if(game.ambience) game.ambience.set(game.trafficOn);
+      showScreen(els.game); els.resultModal.classList.remove('show'); els.helpModal.classList.remove('show');
+      game.level=1; game.score=0; setupLevel();
+      showCountdown(()=>{ game.running = true; game.lastTick = 0; nextChallenge(true); requestAnimationFrame(timerLoop); });
+    }
     function nextLevel(){
       els.resultModal.classList.remove('show');
-      if(game.level >= 3){ game.level = 1; game.score = 0; }
-      else game.level++;
-      setupLevel();
-      showCountdown(()=>{ game.running = true; game.lastTick=0; nextChallenge(true); requestAnimationFrame(timerLoop); });
+      if(game.level >= 3){ game.level = 1; game.score = 0; } else game.level++;
+      setupLevel(); showCountdown(()=>{ game.running = true; game.lastTick=0; nextChallenge(true); requestAnimationFrame(timerLoop); });
     }
-
     function restartLevel(){
-      els.resultModal.classList.remove('show');
-      setupLevel();
-      setFeedback('Level restarted. Listen closely.', 'info');
+      els.resultModal.classList.remove('show'); setupLevel(); setFeedback('Level restarted. Listen closely.', 'info');
       showCountdown(()=>{ game.running = true; game.lastTick=0; nextChallenge(true); requestAnimationFrame(timerLoop); });
     }
-
     function goHome(){
-      game.running=false; game.awaitingNext=false;
+      game.running=false; game.awaitingNext=false; practice.held.clear();
       if(game.ambience) game.ambience.set(false);
-      els.resultModal.classList.remove('show'); els.helpModal.classList.remove('show');
-      els.game.classList.remove('active'); els.home.classList.add('active');
+      els.resultModal.classList.remove('show'); els.helpModal.classList.remove('show'); showScreen(els.home);
     }
-
     function showCountdown(done){
-      let n=3;
-      els.countNum.textContent = n;
-      els.countdown.classList.add('show');
+      let n=3; els.countNum.textContent = n; els.countdown.classList.add('show');
       const step = () => {
         n--;
-        if(n<=0){
-          els.countNum.textContent = 'GO';
-          setTimeout(()=>{ els.countdown.classList.remove('show'); done(); }, 520);
-        } else {
-          els.countNum.textContent = n;
-          els.countNum.style.animation='none'; void els.countNum.offsetWidth; els.countNum.style.animation='pop .8s ease';
-          setTimeout(step, 720);
-        }
+        if(n<=0){ els.countNum.textContent = 'GO'; setTimeout(()=>{ els.countdown.classList.remove('show'); done(); }, 520); }
+        else { els.countNum.textContent = n; els.countNum.style.animation='none'; void els.countNum.offsetWidth; els.countNum.style.animation='pop .8s ease'; setTimeout(step, 720); }
       };
       setTimeout(step, 720);
     }
 
+    function onPracticeDown(e){
+      e.preventDefault(); resumeAudio();
+      const key = e.currentTarget; const midi = Number(key.dataset.midi); const label = key.dataset.label;
+      try{ key.setPointerCapture(e.pointerId); }catch(_e){}
+      practice.held.set(e.pointerId, {midi, label, key});
+      key.classList.add('practice-active');
+      playToneByMidi(midi, 1.25, 0, .58, practice.instrument);
+      updatePracticeMeter();
+    }
+    function onPracticeUp(e){
+      const held = practice.held.get(e.pointerId);
+      if(held){ held.key.classList.remove('practice-active'); practice.held.delete(e.pointerId); updatePracticeMeter(); }
+    }
+    function updatePracticeControls(){
+      els.octaveStatus.textContent = `Oct ${displayLabel(midiInfo(practice.baseMidi).label).replace(/\d+$/,'')}${midiInfo(practice.baseMidi).octave}`;
+      els.transposeStatus.textContent = `Trans ${practice.transpose>0?'+':''}${practice.transpose}`;
+      els.collapseKeyboardBtn.textContent = practice.collapsed ? 'Show Second Keyboard' : 'Collapse to One Keyboard';
+    }
+    function updatePracticeMeter(){
+      const held = Array.from(practice.held.values());
+      if(held.length === 0){
+        els.practiceMeter.textContent = 'Play a key';
+        els.practiceMeterSub.textContent = practice.collapsed ? 'One keyboard active. Use +/− to shift octave or transpose.' : 'Top row is the lower register. Bottom row continues higher from the top row.';
+        return;
+      }
+      const unique = Array.from(new Map(held.map(h=>[h.midi,h])).values()).sort((a,b)=>a.midi-b.midi);
+      const labels = unique.map(h=>displayLabel(h.label));
+      if(unique.length === 1){
+        els.practiceMeter.textContent = labels[0];
+        const alt = FLAT_EQUIV[midiInfo(unique[0].midi).name];
+        els.practiceMeterSub.textContent = alt ? `Enharmonic: ${alt}${midiInfo(unique[0].midi).octave}` : 'Single note';
+        return;
+      }
+      const chordName = recognizeChord(unique.map(h=>h.midi));
+      els.practiceMeter.textContent = chordName;
+      els.practiceMeterSub.textContent = `Notes: ${labels.join(' • ')}`;
+    }
+    function recognizeChord(midis){
+      const sorted = [...midis].sort((a,b)=>a-b);
+      const pcs = uniq(sorted.map(m=>((m%12)+12)%12));
+      const bassPc = ((sorted[0]%12)+12)%12;
+      for(const rootPc of pcs){
+        const intervals = pcs.map(pc=>(pc-rootPc+12)%12).sort((a,b)=>a-b);
+        for(const pat of CHORD_PATTERNS){
+          if(intervals.length === pat.intervals.length && intervals.every((x,i)=>x===pat.intervals[i])){
+            const slash = bassPc !== rootPc ? `/${noteNameForPc(bassPc)}` : '';
+            return `${noteNameForPc(rootPc)}${pat.name}${slash}`;
+          }
+        }
+      }
+      const exact = sorted.map(m=>displayLabel(midiInfo(m).label)).join(' • ');
+      return `Custom stack: ${exact}`;
+    }
+
+    function openPractice(){
+      resumeAudio(); if(game.ambience) game.ambience.set(false);
+      game.running=false; buildPracticeKeyboards(); showScreen(els.practice);
+    }
+    function openGallery(){ game.running=false; if(game.ambience) game.ambience.set(false); showScreen(els.gallery); }
+
     function bindUI(){
-      document.querySelectorAll('.mode-card').forEach(card=>card.addEventListener('click',()=>{
-        document.querySelectorAll('.mode-card').forEach(c=>c.classList.remove('selected'));
+      document.querySelectorAll('#modeCards .mode-card').forEach(card=>card.addEventListener('click',()=>{
+        document.querySelectorAll('#modeCards .mode-card').forEach(c=>c.classList.remove('selected'));
         card.classList.add('selected'); game.mode=card.dataset.mode;
       }));
-      document.querySelectorAll('.instrument-card').forEach(card=>card.addEventListener('click',()=>{
-        document.querySelectorAll('.instrument-card').forEach(c=>c.classList.remove('selected'));
-        card.classList.add('selected'); game.instrument=card.dataset.instrument;
+      document.querySelectorAll('#instrumentCards .instrument-card').forEach(card=>card.addEventListener('click',()=>{
+        document.querySelectorAll('#instrumentCards .instrument-card').forEach(c=>c.classList.remove('selected'));
+        card.classList.add('selected'); game.instrument=card.dataset.instrument; practice.instrument=card.dataset.instrument;
+        document.querySelectorAll('#practiceBanks .bank-btn').forEach(b=>b.classList.toggle('selected', b.dataset.instrument===practice.instrument));
+      }));
+      document.querySelectorAll('#practiceBanks .bank-btn').forEach(btn=>btn.addEventListener('click',()=>{
+        document.querySelectorAll('#practiceBanks .bank-btn').forEach(b=>b.classList.remove('selected'));
+        btn.classList.add('selected'); practice.instrument=btn.dataset.instrument; game.instrument=btn.dataset.instrument;
+        document.querySelectorAll('#instrumentCards .instrument-card').forEach(c=>c.classList.toggle('selected', c.dataset.instrument===game.instrument));
       }));
       els.startBtn.addEventListener('click', startGame);
       els.howBtn.addEventListener('click',()=>els.helpModal.classList.add('show'));
+      els.galleryBtn.addEventListener('click', openGallery);
+      els.practiceBtn.addEventListener('click', openPractice);
+      els.galleryHomeBtn.addEventListener('click', goHome);
+      els.practiceHomeBtn.addEventListener('click', goHome);
+      els.practiceLaunchBtn.addEventListener('click', startGame);
       els.closeHelpBtn.addEventListener('click',()=>els.helpModal.classList.remove('show'));
       els.replayBtn.addEventListener('click',()=>{ if(game.current) playChallenge(); });
       els.soundPulse.addEventListener('click',()=>{ if(game.current) playChallenge(); });
       els.submitBtn.addEventListener('click', submitChord);
-      els.clearBtn.addEventListener('click',()=>{ game.selected=[]; clearKeySelection(); updateAnswerDisplay(); setFeedback('Selection cleared.', 'info'); });
-      els.trafficBtn.addEventListener('click',()=>{ resumeAudio(); game.trafficOn=!game.trafficOn; if(game.ambience) game.ambience.set(game.trafficOn); updateHud(); });
+      els.clearBtn.addEventListener('click',()=>{
+        game.selected=[]; clearGameHighlights(); updateAnswerDisplay(); setFeedback('Chord selection cleared. Replay the sound and try again.', 'info');
+      });
+      els.trafficBtn.addEventListener('click',()=>{ resumeAudio(); game.trafficOn=!game.trafficOn; if(game.ambience) game.ambience.set(game.trafficOn && els.game.classList.contains('active')); updateHud(); });
       els.homeBtn.addEventListener('click', goHome);
       els.restartBtn.addEventListener('click',()=>{ game.running=false; restartLevel(); });
       els.nextLevelBtn.addEventListener('click', nextLevel);
       els.resultRestartBtn.addEventListener('click', restartLevel);
       els.resultHomeBtn.addEventListener('click', goHome);
+      els.octaveDownBtn.addEventListener('click',()=>{ practice.baseMidi = clamp(practice.baseMidi-12, 24, 60); buildPracticeKeyboards(); });
+      els.octaveUpBtn.addEventListener('click',()=>{ practice.baseMidi = clamp(practice.baseMidi+12, 24, 60); buildPracticeKeyboards(); });
+      els.transposeDownBtn.addEventListener('click',()=>{ practice.transpose = clamp(practice.transpose-1, -12, 12); buildPracticeKeyboards(); });
+      els.transposeUpBtn.addEventListener('click',()=>{ practice.transpose = clamp(practice.transpose+1, -12, 12); buildPracticeKeyboards(); });
+      els.collapseKeyboardBtn.addEventListener('click',()=>{ practice.collapsed=!practice.collapsed; buildPracticeKeyboards(); });
       window.addEventListener('keydown', e=>{
-        if(e.code==='Space'){ e.preventDefault(); if(game.current) playChallenge(); }
-        if(e.code==='Enter' && game.mode==='chord') submitChord();
+        if(e.code==='Space'){ e.preventDefault(); if(game.current && els.game.classList.contains('active')) playChallenge(); }
+        if(e.code==='Enter' && game.mode==='chord' && els.game.classList.contains('active')) submitChord();
       });
       document.addEventListener('visibilitychange',()=>{
-        if(document.hidden && game.audio && game.audio.state==='running'){
-          if(game.ambience) game.ambience.set(false);
-        }else if(!document.hidden && game.ambience && game.trafficOn && els.game.classList.contains('active')) game.ambience.set(true);
+        if(document.hidden && game.audio && game.audio.state==='running'){ if(game.ambience) game.ambience.set(false); }
+        else if(!document.hidden && game.ambience && game.trafficOn && els.game.classList.contains('active')) game.ambience.set(true);
       });
     }
 
-    buildKeyboard(); bindUI(); updateHud(); updateChallengeText();
+    buildGameKeyboard(); buildPracticeKeyboards(); bindUI(); updateHud(); updateChallengeText();
   })();
   </script>
 </body>
